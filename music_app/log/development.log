@@ -8217,3 +8217,396 @@ Processing by BandsController#show as HTML
 Completed 200 OK in 53ms (Views: 48.1ms | ActiveRecord: 2.6ms)
 
 
+Started GET "/session/new?authenticity_token=SztPU%2Fsl4xTf%2BBd957q4V79iAN08WrUwJo2GnX7tNoFNyO4OxrJB5F72JU5INHFvDbqlkpPD9f2RE5i8PYKSCA%3D%3D" for 127.0.0.1 at 2018-09-13 17:14:40 -0700
+Processing by SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"SztPU/sl4xTf+Bd957q4V79iAN08WrUwJo2GnX7tNoFNyO4OxrJB5F72JU5INHFvDbqlkpPD9f2RE5i8PYKSCA=="}
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (12.0ms)
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 160ms (Views: 152.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users/new?authenticity_token=uEKH7whh6%2FL%2FSGC7rFjFgIwWJETWXPNDvJ9yYWkSwje%2BsSayNfZJAn5GUogD1gy4Ps6BC3nFs44LAWxAKn1mvg%3D%3D" for 127.0.0.1 at 2018-09-13 17:14:43 -0700
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"uEKH7whh6/L/SGC7rFjFgIwWJETWXPNDvJ9yYWkSwje+sSayNfZJAn5GUogD1gy4Ps6BC3nFs44LAWxAKn1mvg=="}
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 73ms (Views: 70.3ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-09-13 17:14:55 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"Prick", "password"=>"[FILTERED]"}, "authenticity_token"=>"m8tPA1MU3wN/sQvTC1xgP/+vhrWciZP758K5z2DoRV6dOO5eboN98/6/OeCk0qkHTXcj+jMQ0zZQXKfuI4fh1w=="}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12
+  [1m[36mUser Exists (14.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Prick"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "wMPOmcui6iO-L_sW01YOVg"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12
+  [1m[36mUser Create (3.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "Prick"], ["password_digest", "$2a$10$YczzDozeSx60tPGW/PlbruZQlT3gecnxuyniHLYi9F2pkw6Ka47xa"], ["session_token", "wMPOmcui6iO-L_sW01YOVg"], ["created_at", "2018-09-14 00:14:55.851971"], ["updated_at", "2018-09-14 00:14:55.851971"]]
+  ↳ app/controllers/users_controller.rb:12
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "Prick"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "hU5Sg1aNWMI7FyIh4SKKYQ"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "hU5Sg1aNWMI7FyIh4SKKYQ"], ["updated_at", "2018-09-14 00:14:55.873748"], ["id", 13]]
+  ↳ app/models/user.rb:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:23
+Redirected to http://localhost:3000/users/13
+Completed 302 Found in 183ms (ActiveRecord: 34.2ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2018-09-13 17:14:55 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hU5Sg1aNWMI7FyIh4SKKYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 51ms (Views: 45.3ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-09-13 17:17:53 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"Prick", "password"=>"[FILTERED]"}, "authenticity_token"=>"m8tPA1MU3wN/sQvTC1xgP/+vhrWciZP758K5z2DoRV6dOO5eboN98/6/OeCk0qkHTXcj+jMQ0zZQXKfuI4fh1w=="}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12
+  [1m[36mUser Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Prick"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UMl3tjDib-aMKFhK_j3SdQ"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12
+  [1m[35m (1.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:12
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hU5Sg1aNWMI7FyIh4SKKYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 181ms (Views: 48.6ms | ActiveRecord: 17.4ms)
+
+
+Started GET "/session/new?authenticity_token=m8tPA1MU3wN%2FsQvTC1xgP%2F%2BvhrWciZP758K5z2DoRV6dOO5eboN98%2F6%2FOeCk0qkHTXcj%2BjMQ0zZQXKfuI4fh1w%3D%3D" for 127.0.0.1 at 2018-09-13 17:18:48 -0700
+Processing by SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"m8tPA1MU3wN/sQvTC1xgP/+vhrWciZP758K5z2DoRV6dOO5eboN98/6/OeCk0qkHTXcj+jMQ0zZQXKfuI4fh1w=="}
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hU5Sg1aNWMI7FyIh4SKKYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 41ms (Views: 39.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2018-09-13 17:18:55 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"prick", "password"=>"[FILTERED]"}, "authenticity_token"=>"see2wdPAPAJVRovfcK9Mcd+kcPcIiY3KsWTCp4aifIi3FBec7lee8tRIuezfIYVJbXzVuKcQzQcG+tyGxc3YAQ=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "prick"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.4ms)
+
+
+
+ActionView::MissingTemplate - Missing template sessions/new, application/new with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/Owner/Desktop/W4D4/music_app/app/views"
+:
+  app/controllers/sessions_controller.rb:17:in `create'
+
+Started POST "/__better_errors/254f925cba856f8f/variables" for 127.0.0.1 at 2018-09-13 17:18:55 -0700
+Started POST "/session" for 127.0.0.1 at 2018-09-13 17:19:36 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"Prick", "password"=>"[FILTERED]"}, "authenticity_token"=>"see2wdPAPAJVRovfcK9Mcd+kcPcIiY3KsWTCp4aifIi3FBec7lee8tRIuezfIYVJbXzVuKcQzQcG+tyGxc3YAQ=="}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Prick"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "Prick"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "tKmEoWBYg7WpDgypFgFZ0w"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "tKmEoWBYg7WpDgypFgFZ0w"], ["updated_at", "2018-09-14 00:19:36.967951"], ["id", 13]]
+  ↳ app/models/user.rb:23
+  [1m[35m (8.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:23
+Redirected to http://localhost:3000/users/13
+Completed 302 Found in 159ms (ActiveRecord: 12.5ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2018-09-13 17:19:37 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (6.5ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "tKmEoWBYg7WpDgypFgFZ0w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 139ms (Views: 129.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/bands" for 127.0.0.1 at 2018-09-13 17:20:00 -0700
+Processing by BandsController#index as HTML
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (1.1ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (21.6ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "tKmEoWBYg7WpDgypFgFZ0w"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 50ms (Views: 40.0ms | ActiveRecord: 9.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2018-09-13 17:20:30 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"Prick", "password"=>"[FILTERED]"}, "authenticity_token"=>"see2wdPAPAJVRovfcK9Mcd+kcPcIiY3KsWTCp4aifIi3FBec7lee8tRIuezfIYVJbXzVuKcQzQcG+tyGxc3YAQ=="}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Prick"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "Prick"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "JNyHQE-FhLUpoZ_HNGzVrQ"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "JNyHQE-FhLUpoZ_HNGzVrQ"], ["updated_at", "2018-09-14 00:20:30.913146"], ["id", 13]]
+  ↳ app/models/user.rb:23
+  [1m[35m (8.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:23
+Redirected to http://localhost:3000/users/13
+Completed 302 Found in 141ms (ActiveRecord: 20.2ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2018-09-13 17:20:30 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "JNyHQE-FhLUpoZ_HNGzVrQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 41ms (Views: 36.6ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2018-09-13 17:20:33 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"see2wdPAPAJVRovfcK9Mcd+kcPcIiY3KsWTCp4aifIi3FBec7lee8tRIuezfIYVJbXzVuKcQzQcG+tyGxc3YAQ=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "JNyHQE-FhLUpoZ_HNGzVrQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "Prick"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "WuZY5QzjrRmeuvLmARF0PA"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "WuZY5QzjrRmeuvLmARF0PA"], ["updated_at", "2018-09-14 00:20:33.648761"], ["id", 13]]
+  ↳ app/models/user.rb:23
+  [1m[35m (8.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:23
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 21ms (ActiveRecord: 11.2ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2018-09-13 17:20:33 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 33ms (Views: 32.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/new?authenticity_token=KzhQhvfEx%2FM2IjzsbR%2BYD0VlpR0i6PbQ7yKPz55%2FzpIty%2FHbylNlA7csDt%2FCkVE3970AUo1xth1YvJHu3RBqGw%3D%3D" for 127.0.0.1 at 2018-09-13 17:20:34 -0700
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"KzhQhvfEx/M2IjzsbR+YD0VlpR0i6PbQ7yKPz55/zpIty/HbylNlA7csDt/CkVE3970AUo1xth1YvJHu3RBqGw=="}
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 32ms (Views: 29.9ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-09-13 17:20:38 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"asdas", "password"=>"[FILTERED]"}, "authenticity_token"=>"LHWwKvDs/OXw+OAzIu22GrMCFQgsdpnnVjSweDN1KVUqhhF3zXteFXH20gCNY38iAdqwR4Pv2Srhqq5ZcBqN3A=="}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdas"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "zSPq5xV2qvSTEqNOE6lPfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12
+  [1m[36mUser Create (3.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "asdas"], ["password_digest", "$2a$10$RK9pF9ohbxBahxotwYMY2.QfTEkUdLxKCDcQ5oJwaZqi2e.zujBbu"], ["session_token", "zSPq5xV2qvSTEqNOE6lPfQ"], ["created_at", "2018-09-14 00:20:38.160066"], ["updated_at", "2018-09-14 00:20:38.160066"]]
+  ↳ app/controllers/users_controller.rb:12
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "asdas"], ["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "-jEzo9cWNh_qseG8z1eZxg"], ["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "-jEzo9cWNh_qseG8z1eZxg"], ["updated_at", "2018-09-14 00:20:38.173185"], ["id", 14]]
+  ↳ app/models/user.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:23
+Redirected to http://localhost:3000/bands
+Completed 302 Found in 116ms (ActiveRecord: 8.6ms)
+
+
+Started GET "/bands" for 127.0.0.1 at 2018-09-13 17:20:38 -0700
+Processing by BandsController#index as HTML
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.6ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (19.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-jEzo9cWNh_qseG8z1eZxg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 51ms (Views: 43.0ms | ActiveRecord: 7.1ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2018-09-13 17:20:44 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"L+JO7OOVrS6/PZBblkBnLRTXke/uskAWdwbCsLXp7qYpEe+x3gIP3j4zomg5zq4Vpg80oEErANvAmNyR9oZKLw=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-jEzo9cWNh_qseG8z1eZxg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "asdas"], ["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "6DMtGPeM5C0t65J37b5KjQ"], ["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "6DMtGPeM5C0t65J37b5KjQ"], ["updated_at", "2018-09-14 00:20:44.630019"], ["id", 14]]
+  ↳ app/models/user.rb:23
+  [1m[35m (8.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:23
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 21ms (ActiveRecord: 11.3ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2018-09-13 17:20:44 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 36ms (Views: 34.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/session/new?authenticity_token=bYIIPP0xSkXvuRTK%2Fs8AWbknvrQaubceqWXKDyFXawFrcalhwKbotW63JvlRQclhC%2F8b%2B7Ug99Me%2B9QuYjjPiA%3D%3D" for 127.0.0.1 at 2018-09-13 17:20:45 -0700
+Processing by SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"bYIIPP0xSkXvuRTK/s8AWbknvrQaubceqWXKDyFXawFrcalhwKbotW63JvlRQclhC/8b+7Ug99Me+9QuYjjPiA=="}
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 63ms (Views: 61.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2018-09-13 17:20:53 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"prick", "password"=>"[FILTERED]"}, "authenticity_token"=>"SOMSV/Qb8TXVKN6cqB3KroVzcrWzuqqMDCe/pbp/brZOELMKyYxTxVQm7K8HkwOWN6vX+hwj6kG7uaGE+RDKPw=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "prick"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.5ms)
+
+
+
+ActionView::MissingTemplate - Missing template sessions/new, application/new with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/Owner/Desktop/W4D4/music_app/app/views"
+:
+  app/controllers/sessions_controller.rb:17:in `create'
+
+Started POST "/__better_errors/c12ab2123fef6888/variables" for 127.0.0.1 at 2018-09-13 17:20:53 -0700
+Started POST "/session" for 127.0.0.1 at 2018-09-13 17:21:00 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"Prick", "password"=>"[FILTERED]"}, "authenticity_token"=>"SOMSV/Qb8TXVKN6cqB3KroVzcrWzuqqMDCe/pbp/brZOELMKyYxTxVQm7K8HkwOWN6vX+hwj6kG7uaGE+RDKPw=="}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Prick"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "Prick"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "5g1OZkJryvndaO7xE5SRoQ"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "5g1OZkJryvndaO7xE5SRoQ"], ["updated_at", "2018-09-14 00:21:00.841080"], ["id", 13]]
+  ↳ app/models/user.rb:23
+  [1m[35m (8.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:23
+Redirected to http://localhost:3000/users/13
+Completed 302 Found in 111ms (ActiveRecord: 11.3ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2018-09-13 17:21:00 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5g1OZkJryvndaO7xE5SRoQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 45ms (Views: 42.6ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2018-09-13 17:21:27 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"Prick", "password"=>"[FILTERED]"}, "authenticity_token"=>"SOMSV/Qb8TXVKN6cqB3KroVzcrWzuqqMDCe/pbp/brZOELMKyYxTxVQm7K8HkwOWN6vX+hwj6kG7uaGE+RDKPw=="}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Prick"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "Prick"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "xjZx0ro-2j8VvtVoTRV_YQ"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "xjZx0ro-2j8VvtVoTRV_YQ"], ["updated_at", "2018-09-14 00:21:27.484281"], ["id", 13]]
+  ↳ app/models/user.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:23
+Redirected to http://localhost:3000/bands
+Completed 302 Found in 127ms (ActiveRecord: 12.0ms)
+
+
+Started GET "/bands" for 127.0.0.1 at 2018-09-13 17:21:27 -0700
+Processing by BandsController#index as HTML
+  Rendering bands/index.html.erb within layouts/application
+  [1m[36mBand Load (0.5ms)[0m  [1m[34mSELECT "bands".* FROM "bands"[0m
+  ↳ app/views/bands/index.html.erb:2
+  Rendered bands/index.html.erb within layouts/application (29.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "xjZx0ro-2j8VvtVoTRV_YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 82ms (Views: 73.0ms | ActiveRecord: 8.1ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2018-09-13 17:21:31 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Wi3xqZ/cHqRuTRtyUN3w+l22r/c0PAv4ABVjGLHwOvpc3lD0oku8VO9DKUH/UznC724KuJulSzW3i3058p+ecw=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "xjZx0ro-2j8VvtVoTRV_YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "Prick"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "GC8jhuAjauariDXN0h0i4w"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "GC8jhuAjauariDXN0h0i4w"], ["updated_at", "2018-09-14 00:21:31.793614"], ["id", 13]]
+  ↳ app/models/user.rb:23
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:23
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 22ms (ActiveRecord: 10.5ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2018-09-13 17:21:31 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:20
+Completed 200 OK in 46ms (Views: 43.4ms | ActiveRecord: 1.5ms)
+
+
